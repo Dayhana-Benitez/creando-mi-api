@@ -64,7 +64,6 @@ module.exports = {
             })
             .catch((error) => res.status(500).send(error))
         }
-        
     },
     add: (req, res) => {
         const {title, rating, awards, release_date, length, genre_id} = req.body
@@ -143,18 +142,17 @@ module.exports = {
             }
         })
         .catch((error) => res.status(500).send(error))
-
     },
     delete: (req, res) => {
         let actorUpdate = db.Actor.update({
-            favourite_movie_id: null,
+            favorite_movie_id: null,
         },
         {
             where: {
-                favourite_movie_id: req.params.id
+                favorite_movie_id: req.params.id
             }
         });
-        let actorMovieUpdate = db.actor_movie.destroy({
+        let actorMovieUpdate = db.ActorMovie.destroy({
             where: {
                 movie_id: req.params.id
             },
